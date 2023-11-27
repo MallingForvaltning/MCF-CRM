@@ -23,6 +23,3 @@ This is a simple [mail add-in for Outlook](https://msdn.microsoft.com/EN-US/libr
 Copyright (c) Microsoft. All rights reserved.
 
 ----------
-Connect with me on Twitter [@JasonJohMSFT](https://twitter.com/JasonJohMSFT)
-
-Follow the [Exchange Dev Blog](http://blogs.msdn.com/b/exchangedev/)
