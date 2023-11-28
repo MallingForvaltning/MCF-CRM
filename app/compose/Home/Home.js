@@ -1,40 +1,46 @@
-﻿document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    var submitButton = document.getElementById('submitButton');
-    
-    // Change the text of the Submit button to "Takk!"
-    submitButton.textContent = 'Takk!';
-    
-    // Disable the button after submission
-    submitButton.disabled = true;
-    
-    // Show the confirmation message
-    var confirmationMessage = document.getElementById('confirmationMessage');
-    confirmationMessage.style.display = 'block';
-    
-    // Call the function to forward the email with the code and tenant's name
-    forwardEmailWithCodeAndName();
+﻿Office.onReady(function(info) {
+    // The Office JavaScript API is ready
+    if (info.host === Office.HostType.Outlook) {
+        // Event listeners and functions that interact with Office APIs are safe to define here
+        
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var submitButton = document.getElementById('submitButton');
+            submitButton.textContent = 'Takk!'; // Change the text of the Submit button to "Takk!"
+            submitButton.disabled = true; // Disable the button after submission
+            
+            var confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'block'; // Show the confirmation message
+            
+            // Call the function to forward the email with the code and tenant's name
+            forwardEmailWithCodeAndName();
+            
+            // Implement any remaining form submission logic here
+            // ...
+        });
 
-    // Implement any remaining form submission logic here
-    // ...
+        document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
+            radio.addEventListener('change', function(event) {
+                var nameInput = document.getElementById('nameInput');
+                var ownerNotice = document.getElementById('ownerNotice');
+                if (event.target.value === 'leietaker') {
+                    nameInput.placeholder = "Navn på leietaker..";
+                    ownerNotice.style.display = 'none';
+                } else if (event.target.value === 'eiendomseier') {
+                    nameInput.placeholder = "Navn på eiendom...";
+                    ownerNotice.style.display = 'block';
+                }
+            });
+        });
+
+        // ... any other code dependent on the Office API ...
+
+    }
 });
 
-document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
-    radio.addEventListener('change', function(event) {
-        var nameInput = document.getElementById('nameInput');
-        var ownerNotice = document.getElementById('ownerNotice');
-        if (event.target.value === 'leietaker') {
-            nameInput.placeholder = "Navn på leietaker..";
-            ownerNotice.style.display = 'none';
-        } else if (event.target.value === 'eiendomseier') {
-            nameInput.placeholder = "Navn på eiendom...";
-            ownerNotice.style.display = 'block';
-        }
-    });
-});
-
-// This function forwards the current email to jn@malling.no with a specific code and tenant's name.
+// This function can remain outside the Office.onReady function 
+// if it's only called from within the Office.onReady scope
 function forwardEmailWithCodeAndName() {
     // Retrieve the input value from the 'nameInput' field
     var tenantName = document.getElementById('nameInput').value;
