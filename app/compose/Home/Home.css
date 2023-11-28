@@ -1,62 +1,55 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="YourStyleSheet.css"> <!-- Replace "YourStyleSheet.css" with the actual path to your CSS file -->
-</head>
-<body>
-<div class="form-container">
-    <form id="registrationForm">
-        <h2>Alfred Robot: CRM</h2>
+﻿body {
+    font-family: Helvetica, Arial, sans-serif;
+}
 
-        <div class="form-group">
-            <label><input type="radio" name="role" value="leietaker" checked> Leietaker</label>
-            <label><input type="radio" name="role" value="eiendomseier"> Eiendomseier</label>
-        </div>
+.form-container {
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: #3C0025;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        <div class="form-group" id="ownerNotice" style="display: none;">
-            <p>Merk at det er navnet på eiendom og ikke eiendomseier som skal fylles ut når du velger eiendomseier</p>
-        </div>
+form h2 {
+    text-align: center;
+    color:  #f7f7f7;
+}
 
-        <div class="form-group">
-            <input type="text" id="nameInput" placeholder="Navn på leietaker.." required>
-        </div>
-        
-        <!-- ... other form groups ... -->
-        
-        <button type="submit" id="submitButton">Send</button>
-    </form>
-    
-    <div id="confirmationMessage" style="display: none;">Takk! Du hører fra meg snart</div>
-</div>
-<script src="Home.js"></script>
-<script>
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Implement form submission logic here if needed
-    // You may use Office.js APIs for interacting with Outlook
+.form-group {
+    margin-bottom: 15px;
+}
 
-    // Show the confirmation message
-    var confirmationMessage = document.getElementById('confirmationMessage');
-    confirmationMessage.style.display = 'block';
-});
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
-// Change event listener for radio buttons to toggle the placeholder text
-document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
-    radio.addEventListener('change', function(event) {
-        var nameInput = document.getElementById('nameInput');
-        var ownerNotice = document.getElementById('ownerNotice');
-        if (event.target.value === 'leietaker') {
-            nameInput.placeholder = "Navn på leietaker..";
-            ownerNotice.style.display = 'none';
-        } else if (event.target.value === 'eiendomseier') {
-            nameInput.placeholder = "Navn på eiendom...";
-            ownerNotice.style.display = 'block';
-        }
-    });
-});
-</script>
-</body>
-</html>
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #FF7474; /* Updated background color */
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color:  #CC5959; /* A slightly darker shade for hover effect */
+}
