@@ -1,28 +1,22 @@
-﻿var submitted = false; // Flag to track if the form has been submitted
-
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
+﻿document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
-
-    if (!submitted) { // Check if the form has not been submitted before
-        // Change the text of the Submit button to "Takk!"
-        var submitButton = document.getElementById('submitButton');
-        submitButton.textContent = 'Takk!';
-        
-        submitted = true; // Set the flag to indicate submission
-        
-        // Disable the button after submission
-        submitButton.setAttribute('disabled', 'disabled');
-        
-        // Show the confirmation message
-        var confirmationMessage = document.getElementById('confirmationMessage');
-        confirmationMessage.style.display = 'block';
-        
-        // Implement any remaining form submission logic here
-        // ...
-    }
+    
+    var submitButton = document.getElementById('submitButton');
+    
+    // Change the text of the Submit button to "Takk!"
+    submitButton.textContent = 'Takk!';
+    
+    // Disable the button after submission
+    submitButton.disabled = true;
+    
+    // Show the confirmation message
+    var confirmationMessage = document.getElementById('confirmationMessage');
+    confirmationMessage.style.display = 'block';
+    
+    // Implement any remaining form submission logic here
+    // ...
 });
 
-// Change event listener for radio buttons to toggle the placeholder text
 document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
     radio.addEventListener('change', function(event) {
         var nameInput = document.getElementById('nameInput');

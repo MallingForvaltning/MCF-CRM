@@ -20,7 +20,6 @@ form h2 {
     margin-bottom: 15px;
 }
 
-/* Add this rule to make the text within labels white */
 .form-group label {
     color: white;
 }
@@ -43,17 +42,9 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-/* CSS to style the logo */
-.logo {
-    width: 100px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensures proper spacing and alignment */
-    margin: 0 auto; /* Center the logo horizontally */
-}
-
 button[type="submit"] {
     width: 100%;
-    background-color: #FF7474; /* Updated background color */
+    background-color: #FF7474;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -65,5 +56,9 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #CC5959; /* A slightly darker shade for hover effect */
+    background-color: #CC5959;
+}
+
+#confirmationMessage {
+    color: white;
 }
