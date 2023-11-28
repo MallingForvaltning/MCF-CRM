@@ -20,6 +20,11 @@ form h2 {
     margin-bottom: 15px;
 }
 
+/* Add this rule to make the text within labels white */
+.form-group label {
+    color: white;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
