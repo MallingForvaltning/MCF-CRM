@@ -43,6 +43,14 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
+/* CSS to style the logo */
+.logo {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures proper spacing and alignment */
+    margin: 0 auto; /* Center the logo horizontally */
+}
+
 button[type="submit"] {
     width: 100%;
     background-color: #FF7474; /* Updated background color */
@@ -50,6 +58,7 @@ button[type="submit"] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
+    font-size: initial;
     font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
