@@ -42,37 +42,39 @@
 // This function can remain outside the Office.onReady function 
 // if it's only called from within the Office.onReady scope
 function forwardEmailWithCodeAndName() {
-    // Retrieve the input value from the 'nameInput' field
+    console.log('forwardEmailWithCodeAndName called'); // Debug log
     var tenantName = document.getElementById('nameInput').value;
+    console.log('Tenant Name:', tenantName); // Debug log
 
-    // Use Office JavaScript API to get the current item
     var item = Office.context.mailbox.item;
-
-    // Create a forward message
     item.body.getAsync('html', function(result) {
         if (result.status === Office.AsyncResultStatus.Succeeded) {
-            var originalBody = result.value; // Get the current body of the email
-            var newBody = `ALFCRM<br>Tenant Name: ${tenantName}<br><br>` + originalBody; // Append the code and tenant's name
+            var originalBody = result.value;
+            var newBody = `ALFCRM<br>Tenant Name: ${tenantName}<br><br>` + originalBody;
 
-            // Create a forward message
             var forwardMessage = item.forward();
-            forwardMessage.to.setAsync(['jn@malling.no']); // Set the recipient
-            forwardMessage.body.setAsync(newBody, { coercionType: 'html' }, function(result) {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    // Send the forward message
-                    forwardMessage.sendAsync(function(result) {
+            forwardMessage.to.setAsync(['jn@malling.no'], function(asyncResult) {
+                if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                    console.log('Recipient set successfully'); // Debug log
+                    forwardMessage.body.setAsync(newBody, { coercionType: 'html' }, function(result) {
                         if (result.status === Office.AsyncResultStatus.Succeeded) {
-                            console.log('Email forwarded successfully.');
+                            forwardMessage.sendAsync(function(result) {
+                                if (result.status === Office.AsyncResultStatus.Succeeded) {
+                                    console.log('Email forwarded successfully.');
+                                } else {
+                                    console.error('Error while sending email:', result.error.message);
+                                }
+                            });
                         } else {
-                            console.log('Error while sending email: ' + result.error.message);
+                            console.error('Error while setting email body:', result.error.message);
                         }
                     });
                 } else {
-                    console.log('Error while setting email body: ' + result.error.message);
+                    console.error('Error while setting recipient:', asyncResult.error.message);
                 }
             });
         } else {
-            console.log('Error while getting email body: ' + result.error.message);
+            console.error('Error while getting email body:', result.error.message);
         }
     });
 }
