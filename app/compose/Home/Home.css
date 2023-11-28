@@ -1,16 +1,54 @@
-﻿/* Page-specific styling */
-
-/* Formatting for the sample buttons */
-
-#set-subject {
-    width: 100px;
-    margin-right: 5px;
+﻿body {
+    font-family: Arial, sans-serif;
 }
 
-#get-subject {
-    width: 100px;
+.form-container {
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#add-to-recipients {
-    width: 205px;
+form h2 {
+    text-align: center;
+    color: #5e5e5e;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
 }

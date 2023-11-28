@@ -5,8 +5,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso, Inc.</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="HelloWorld" />
-  <Description DefaultValue="HelloWorld"/>
+  <DisplayName DefaultValue="Alfred Robot: CRM" />
+  <Description DefaultValue="Alfred Robot: CRM"/>
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
