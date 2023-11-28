@@ -9,7 +9,6 @@
 <body>
 <div class="form-container">
 
-
     <form id="registrationForm">
 
         <h2>Alfred Robot: CRM</h2>
@@ -29,38 +28,12 @@
         
         <!-- ... other form groups ... -->
         
-        <button type="submit" id="submitButton">Send</button>
+        <button type="submit" id="submitButton" disabled>Takk!</button>
     </form>
     
     <div id="confirmationMessage" style="display: none; color: white;">Takk! Du hører fra meg snart</div>
 
 </div>
 <script src="Home.js"></script>
-<script>
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Implement form submission logic here if needed
-    // You may use Office.js APIs for interacting with Outlook
-
-    // Show the confirmation message
-    var confirmationMessage = document.getElementById('confirmationMessage');
-    confirmationMessage.style.display = 'block';
-});
-
-// Change event listener for radio buttons to toggle the placeholder text
-document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
-    radio.addEventListener('change', function(event) {
-        var nameInput = document.getElementById('nameInput');
-        var ownerNotice = document.getElementById('ownerNotice');
-        if (event.target.value === 'leietaker') {
-            nameInput.placeholder = "Navn på leietaker..";
-            ownerNotice.style.display = 'none';
-        } else if (event.target.value === 'eiendomseier') {
-            nameInput.placeholder = "Navn på eiendom...";
-            ownerNotice.style.display = 'block';
-        }
-    });
-});
-</script>
 </body>
 </html>
