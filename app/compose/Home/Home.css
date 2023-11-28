@@ -6,14 +6,14 @@
     max-width: 300px;
     margin: auto;
     padding: 20px;
-    background-color: #f7f7f7;
+    background-color: #3C0025;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form h2 {
     text-align: center;
-    color:  #3C0025;
+    color:  #f7f7f7;
 }
 
 .form-group {
@@ -45,6 +45,7 @@ button[type="submit"] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
+    font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
 }
