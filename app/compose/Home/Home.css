@@ -13,7 +13,7 @@
 
 form h2 {
     text-align: center;
-    color:  #f7f7f7;
+    color: #f7f7f7;
 }
 
 .form-group {
@@ -65,5 +65,5 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color:  #CC5959; /* A slightly darker shade for hover effect */
+    background-color: #CC5959; /* A slightly darker shade for hover effect */
 }
