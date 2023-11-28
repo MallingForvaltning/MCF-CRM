@@ -12,11 +12,11 @@
         <h2>Alfred Robot: CRM</h2>
 
         <div id="ownerNotice" class="form-group" style="display: none;">
-            <p>Merk at det er navnet på eiendom og ikke eiendomseier som skal fylles ut under</p>
+            <p>Merk at det er navnet på eiendom og ikke eiendomseier som skal fylles ut når du velger eiendomseier</p>
         </div>
 
         <div class="form-group">
-            <label><input type="radio" name="role" value="leietaker" checked> Leietaker (standard)</label>
+            <label><input type="radio" name="role" value="leietaker" checked> Leietaker</label>
             <label><input type="radio" name="role" value="eiendomseier"> Eiendomseier</label>
         </div>
 
@@ -27,8 +27,35 @@
         <!-- ... other form groups ... -->
         
         <button type="submit" id="submitButton">Send</button>
+        <div id="confirmationMessage" style="display: none;">Takk! Du hører fra meg snart</div>
     </form>
 </div>
 <script src="Home.js"></script>
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Implement form submission logic here if needed
+    // You may use Office.js APIs for interacting with Outlook
+
+    // Show the confirmation message
+    var confirmationMessage = document.getElementById('confirmationMessage');
+    confirmationMessage.style.display = 'block';
+});
+
+// Change event listener for radio buttons to toggle the placeholder text
+document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
+    radio.addEventListener('change', function(event) {
+        var nameInput = document.getElementById('nameInput');
+        var ownerNotice = document.getElementById('ownerNotice');
+        if (event.target.value === 'leietaker') {
+            nameInput.placeholder = "Navn på leietaker..";
+            ownerNotice.style.display = 'none';
+        } else if (event.target.value === 'eiendomseier') {
+            nameInput.placeholder = "Navn på eiendom...";
+            ownerNotice.style.display = 'block';
+        }
+    });
+});
+</script>
 </body>
 </html>
