@@ -23,16 +23,16 @@ document.getElementById('registrationForm').addEventListener('submit', function(
                             if (sendResult.status === Office.AsyncResultStatus.Succeeded) {
                                 // Forwarding was successful
                                 console.log('Email forwarded successfully.');
-
+                                
                                 // Change the text of the Submit button to "Takk!"
                                 var submitButton = document.getElementById('submitButton');
                                 submitButton.textContent = 'Takk!';
-
+                                
                                 submitted = true; // Set the flag to indicate submission
-
+                                
                                 // Disable the button after submission
                                 submitButton.setAttribute('disabled', 'disabled');
-
+                                
                                 // Continue with any additional form submission logic
                                 // ...
                             } else {
@@ -51,4 +51,19 @@ document.getElementById('registrationForm').addEventListener('submit', function(
             }
         });
     }
+});
+
+// Change event listener for radio buttons to toggle the placeholder text
+document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
+    radio.addEventListener('change', function(event) {
+        var nameInput = document.getElementById('nameInput');
+        var ownerNotice = document.getElementById('ownerNotice');
+        if (event.target.value === 'leietaker') {
+            nameInput.placeholder = "Navn på leietaker..";
+            ownerNotice.style.display = 'none';
+        } else if (event.target.value === 'eiendomseier') {
+            nameInput.placeholder = "Navn på eiendom...";
+            ownerNotice.style.display = 'block';
+        }
+    });
 });
